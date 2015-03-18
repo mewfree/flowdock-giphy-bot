@@ -1,0 +1,15 @@
+{
+  "name": "flowdock-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "flowdock": "latest",
+    "request": "latest"
+  }
+}
