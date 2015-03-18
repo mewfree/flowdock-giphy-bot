@@ -1,2 +1,6 @@
 # flowdock-giphy-bot
-Bot posting a giphy gif in Flowdock
+The bot searches the first search result on Giphy.com and display the result in Flowdock.
+
+Example: "!gifbot new york" should display a New York GIF.
+
+Requires a conf.json file with a flowdock API key ("fdkey"), a flow ID ("flowid") and a Giphy API key ("giphykey")
