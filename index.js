@@ -11,7 +11,7 @@ session.flows(function(err, flows) {
     return f.id;
   });
   anotherStream = session.stream(flowIds);
-  return anotherStream.on('message', function(msg) {
+  return anotherStream.on('message', function(message) {
     if (message.event == 'message') {
       var query = message.content;
       query = query.split(' ');
@@ -21,7 +21,7 @@ session.flows(function(err, flows) {
         request('http://api.giphy.com/v1/gifs/random?api_key='+conf.giphykey+'&tag='+query, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             var gif = JSON.parse(body).data.image_original_url;
-            session.comment(flowid, message.id, gif);
+            session.comment(message.flow, message.id, gif);
           }
         });
       }
