@@ -21,7 +21,12 @@ session.flows(function(err, flows) {
         request('http://api.giphy.com/v1/gifs/random?api_key='+conf.giphykey+'&tag='+query, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             var gif = JSON.parse(body).data.image_original_url;
-            session.comment(message.flow, message.id, gif);
+            if (!gif) {
+              session.comment(message.flow, message.id, 'Sorry, no GIF found');
+            }
+            else {
+              session.comment(message.flow, message.id, gif);
+            }
           }
         });
       }
