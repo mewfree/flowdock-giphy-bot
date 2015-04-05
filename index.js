@@ -1,5 +1,6 @@
 var conf = require('./conf.json');
 var request = require('request');
+var emoji = require('emoji-random');
 var Session = require('flowdock').Session;
 var session = new Session(conf.fdkey);
 
@@ -22,7 +23,7 @@ session.flows(function(err, flows) {
           if (!error && response.statusCode == 200) {
             var gif = JSON.parse(body).data.image_original_url;
             if (!gif) {
-              session.comment(message.flow, message.id, 'Sorry, no GIF found');
+              session.comment(message.flow, message.id, 'Sorry, no GIF has been found. Here is a random emoji to make you feel better: '+emoji.random());
             }
             else {
               session.comment(message.flow, message.id, gif);
